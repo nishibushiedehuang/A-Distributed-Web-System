@@ -158,7 +158,7 @@ SpringBoot + JDBC连接数据库可参考[https://www.bilibili.com/video/av75196
 </dependency>
 ```
 #### 3. 添加配置文件配置数据库和其他参数
-在resource文件夹下application.properties配置文件中输入数据库参数，serverTimezone时区等参数不可省略。<br>
+在resource文件夹下application.properties配置文件中输入数据库参数，serverTimezone时区等不可省略。<br>
 <pre>
 spring.datasource.url=jdbc:mysql://localhost:3306/你的数据库名?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
 spring.datasource.username=root
@@ -194,7 +194,7 @@ public class JdbcController {<br>
 #### 5. 测试效果
 启动服务提供者DubboProviderApplication.Java，浏览器访问 [http://localhost:8333/userList](http://localhost:8333/userList)，连接数据库成功。<br>
 <img width="700" height="120" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/15.png"/><br>
-将JdbcController类整合到HelloServiceImpl<br>
+在HelloServiceImpl中使用J<br>
 <pre>
 package cn.snailclimb.service.impl;
 
