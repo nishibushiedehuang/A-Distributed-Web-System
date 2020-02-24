@@ -194,7 +194,7 @@ public class JdbcController {<br>
 #### 5. 测试效果
 启动服务提供者DubboProviderApplication.Java，浏览器访问 [http://localhost:8333/userList](http://localhost:8333/userList)，连接数据库成功。<br>
 <img width="700" height="120" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/15.png"/><br>
-在HelloServiceImpl中使用J<br>
+在HelloServiceImpl中使用JDBC连接数据库<br>
 <pre>
 package cn.snailclimb.service.impl;
 
