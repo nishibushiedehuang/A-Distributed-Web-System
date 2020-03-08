@@ -242,7 +242,7 @@ public class HelloServiceImpl implements HelloService {
     	}
 </pre>
 #### 3. 项目展示
-<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/18.jpg"/>
+<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/18.jpg"/><br>
 <img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/19.png"/><br>
 #### 4. 在user表中添加影院信息数据
 <img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/22.png"/><br>
