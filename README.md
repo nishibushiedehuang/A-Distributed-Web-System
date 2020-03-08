@@ -268,7 +268,7 @@ theater.vue中向服务消费端发起请求。
     }
 </pre>
 #### 7. 接收请求、查询数据
-将consumer端口修改为http://localhost:8330/cinema，传入前端请求参数，参考[https://www.bilibili.com/video/av47953244?from=search&seid=5742145757867088188](https://www.bilibili.com/video/av47953244?from=search&seid=5742145757867088188)
+将consumer端口修改为[http://localhost:8330/cinema](http://localhost:8330/cinema)，传入前端请求参数，参考[https://www.bilibili.com/video/av47953244?from=search&seid=5742145757867088188](https://www.bilibili.com/video/av47953244?from=search&seid=5742145757867088188)
 <pre>
 	@RequestMapping(value="/cinema",params = {"zoneId","keyword"})
 	public List<Map<String,Object>> hello(String zoneId,String keyword){
