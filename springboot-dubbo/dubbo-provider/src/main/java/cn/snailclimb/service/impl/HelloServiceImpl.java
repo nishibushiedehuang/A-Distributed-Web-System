@@ -14,12 +14,11 @@ import cn.snailclimb.service.HelloService;
 @Service
 public class HelloServiceImpl implements HelloService {	
 	
-	@Autowired
-	JdbcTemplate jdbcTemplate;
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 	
     @Override
-	public List<Map<String,Object>> userList(){
-		String sql = "select * from user";
+	public List<Map<String,Object>> userList(String sql){
 		List<Map<String,Object>> list_maps = jdbcTemplate.queryForList(sql);
 		return list_maps;
 	}
