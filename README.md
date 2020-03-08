@@ -227,7 +227,7 @@ public class HelloServiceImpl implements HelloService {
 <img width="700" height="120" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/16.jpg"/><br>
 ## Step Six
 ### 构建Web前端
-#### 1. 创建一个VUE工程，项目结构:
+#### 1. 使用VUE搭建一个电影购票系统，项目结构:
 <img width="350" height="400" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/17.png"/><br>
 #### 2. 配置代理路径
 在index.js的dev下设置代理路径
@@ -241,19 +241,53 @@ public class HelloServiceImpl implements HelloService {
     	  	}
     	}
 </pre>
-#### 3. 发起请求
-APP.vue中向服务消费端发起请求。
+#### 3. 项目展示
+<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/18.jpg"/>
+<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/19.png"/><br>
+#### 4. 在user表中添加影院信息数据
+<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/22.png"/><br>
+#### 5. 选择地区、输入关键字搜索影院信息
+<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/20.png"/><br>
+#### 6. 发起请求
+theater.vue中向服务消费端发起请求。
 <pre>
-    created() {
-        //在created函数中使用axios的get请求向后台获取用户信息数据
-        this.$ajax('/api/hello').then(res => {
-	          this.info = res.data;
-	          console.log(res.data);
-        }).catch(function (error) {
-          console.log(error);
-        });
-      }
+    //在methods中使用axios的get请求向后台获取信息数据     
+    search(){
+	this.$ajax('/api/cinema',{
+		params:{
+			zoneId :this.value,
+			keyword:this.input,
+		}
+	}).then(res => {
+		  this.tableData = res.data;
+		  this.num = this.tableData.length;
+		  console.log(res.data);
+	}).catch(function (error) {
+	  console.log(error);
+	});
+    }
 </pre>
-#### 4. 测试结果
-运行npm run dev，浏览器访问 [http://localhost:8080](http://localhost:8080)，获取服务消费端数据成功。
-<img width="700" height="120" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/18.jpg"/><br>
+#### 7. 接收请求、查询数据
+将consumer端口修改为http://localhost:8330/cinema，传入前端请求参数，参考[https://www.bilibili.com/video/av47953244?from=search&seid=5742145757867088188](https://www.bilibili.com/video/av47953244?from=search&seid=5742145757867088188)
+<pre>
+	@RequestMapping(value="/cinema",params = {"zoneId","keyword"})
+	public List<Map<String,Object>> hello(String zoneId,String keyword){
+		String sql =new String();
+		if(zoneId != null && zoneId.length() > 0 && keyword != null && keyword.length() > 0 ) {
+			sql = "select * from user where zoneId ='"+zoneId+"' and theater_name like '%"+keyword+"%'" ;
+		}else if(zoneId != null && zoneId.length() > 0 ) {
+			sql = "select * from user where zoneId ='"+zoneId+"'" ;
+		}else if(keyword != null && keyword.length() > 0) {
+			sql = "select * from user where theater_name like '%"+keyword+"%'" ;
+		}else {
+			sql = "select * from user";
+		}
+        	System.out.println(helloService.userList(sql));	
+		List<Map<String,Object>> hello = helloService.userList(sql);
+		return hello;
+	}
+</pre>
+#### 8. 返回结果
+运行npm run dev，浏览器访问 [http://localhost:8080](http://localhost:8080)，搜索影院信息，获取consumer端口数据成功。
+<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/20.png"/><br>
+<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/21.png"/>
