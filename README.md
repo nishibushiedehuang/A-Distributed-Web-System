@@ -242,12 +242,12 @@ public class HelloServiceImpl implements HelloService {
     	}
 </pre>
 #### 3. 项目展示
-<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/18.jpg"/><br>
-<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/19.png"/><br>
+<img width="500" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/18.jpg"/><br>
+<img width="500" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/19.png"/><br>
 #### 4. 在user表中添加影院信息数据
-<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/22.png"/><br>
+<img width="500" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/22.png"/><br>
 #### 5. 选择地区、输入关键字搜索影院信息
-<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/20.png"/><br>
+<img width="500" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/20.png"/><br>
 #### 6. 发起请求
 theater.vue中向服务消费端发起请求。
 <pre>
@@ -271,7 +271,7 @@ theater.vue中向服务消费端发起请求。
 将consumer端口修改为[http://localhost:8330/cinema](http://localhost:8330/cinema)，传入前端请求参数，参考[https://www.bilibili.com/video/av47953244?from=search&seid=5742145757867088188](https://www.bilibili.com/video/av47953244?from=search&seid=5742145757867088188)
 <pre>
 	@RequestMapping(value="/cinema",params = {"zoneId","keyword"})
-	public List<Map<String,Object>> hello(String zoneId,String keyword){
+	public List< Map< String,Object>> hello(String zoneId,String keyword){
 		String sql =new String();
 		if(zoneId != null && zoneId.length() > 0 && keyword != null && keyword.length() > 0 ) {
 			sql = "select * from user where zoneId ='"+zoneId+"' and theater_name like '%"+keyword+"%'" ;
@@ -283,11 +283,11 @@ theater.vue中向服务消费端发起请求。
 			sql = "select * from user";
 		}
         	System.out.println(helloService.userList(sql));	
-		List<Map<String,Object>> hello = helloService.userList(sql);
+		List< Map< String,Object>> hello = helloService.userList(sql);
 		return hello;
 	}
 </pre>
 #### 8. 返回结果
 运行npm run dev，浏览器访问 [http://localhost:8080](http://localhost:8080)，搜索影院信息，获取consumer端口数据成功。
-<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/20.png"/><br>
-<img width="400" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/21.png"/>
+<img width="500" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/20.png"/><br>
+<img width="500" height="300" src="https://github.com/nishibushiedehuang/A-Distributed-Web-System/raw/master/img-folder/21.png"/>
